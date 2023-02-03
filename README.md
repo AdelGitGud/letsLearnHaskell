@@ -1,0 +1,2 @@
+# letsLearnHaskell
+ Just learning haskell
