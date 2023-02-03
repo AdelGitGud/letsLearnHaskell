@@ -3,11 +3,11 @@ module Main (main) where
 import Lib
 
 fac :: Integer -> Integer
-fac x =
-	if x <= 1 then
-		1
-	else
-		x * fac (x-1)
+fac x = aux x 1
+	where
+		aux x acc
+			| x <= 1 = acc
+			| otherwise = aux (x-1) (x*acc)
 
 main :: IO ()
 main = do
