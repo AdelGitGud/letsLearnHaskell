@@ -2,15 +2,23 @@ module Main (main) where
 
 import Lib
 
-fac :: Integer -> Integer
-fac x = aux x 1
-	where
-		aux x acc
-			| x <= 1 = acc
-			| otherwise = aux (x-1) (x*acc)
-
-main :: IO ()
+main :: IO Int
 main = do
-	n <- getLine
-	let result = fac (read n :: Integer)
-	print result
+        putStrLn "Welcome to the game!"
+        putStrLn "Please enter a number between 1 and 100"
+        x <- getLine
+        let x' = read x :: Int
+        playGame x'
+
+playGame :: Int -> IO Int
+playGame x = do
+        putStrLn "Please enter your a number matching the one previously entered"
+        y <- getLine
+        let y' = read y :: Int
+        if y' == x
+        then do
+                putStrLn "You win!"
+                return 0
+        else do
+                putStrLn "You lose!"
+                playGame y'
